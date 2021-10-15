@@ -4,13 +4,9 @@ class AnswersController < ApplicationController
   end
 
   def create
-    question = Question.find(params[:question_id])
-    answer = question.answers.new(answer_params)
-    if answer.save
-      redirect_to answer.question
-    else
-      render :new
-    end
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.new(answer_params)
+    @answer.save
   end
 
   private

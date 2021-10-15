@@ -1,11 +1,10 @@
 h1= @question.title
 p= @question.body
 
+h3 All answers for this questions
 .answers
-  - @question.answers.each do |answer|
-    p= answer.body
-
-= form_for [@question,@answer] do |f|
-  =f.label :body, 'Your answer'
-  =f.text_area :body
-  =f.submit 'Create'
+  = render 'answers'
+= form_for [@question, @answer], remote: true do |f|
+  = f.label :body, 'Your answer'
+  = f.text_area :body
+  = f.submit 'Create'
