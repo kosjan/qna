@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AnswerController, type: :controller do
+RSpec.describe AnswersController, type: :controller do
   let(:question) { FactoryBot.create(:question) }
   describe 'GET #new' do
     before {get :new, params: { question_id: question.id } }

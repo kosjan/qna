@@ -5,12 +5,10 @@ feature 'Create question', %q{
   As an authoraized user
   I want to ask the question
 } do
-  scenario 'Registered user trying to ask the question' do
-    User.create!(email: 'user@test.ru', password: '123456')
-    visit new_user_session_path
-    fill_in 'Email', with: 'user@test.ru'
-    fill_in 'Password', with: '123456'
-    click_on 'Log in'
+  given(:user) { create(:user) }
+
+  scenario 'Authenticated user create the question' do
+    sign_in(user)
 
     visit questions_path
 
